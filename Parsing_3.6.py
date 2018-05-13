@@ -124,16 +124,6 @@ def url_adres():
         letter('http://samlib.ru' + el[0])
         break
 
-    # adresa.append()
-    # for el in adresa:
-    #     cursor.execute("SELECT URL FROM Samizdat WHERE URL LIKE '%{:}%'".format(el))
-    #     if len(cursor.fetchall()) == 0:
-    #         k = str(el).split('http://samlib.ru')[1]
-    #         cursor.execute("DELETE FROM Адреса_страниц WHERE (Адреса = ?)", (k,))
-    #         SQL_Connect.commit()  # Применение изменений к базе данных
-    #
-    # return None
-
 # ------ Получение адресов со страницы с буквой ------
 def letter(url):
     url_letter = urlopen(url)
@@ -175,37 +165,3 @@ k = mail()
 print("\nУф... {0:d} страниц обработано, работа закончена!".format(k))
 cursor.close()
 SQL_Connect.close()
-
-# print_rez('b')
-# print(baze_adress)  # Выведение финальных результатов парсинга
-# print("\nTime: %.03f s" % (time.time() - start))
-
-# cursor.execute("INSERT INTO 'Города' ('Город') VALUES ('{:s}')".format(baze_parsing['Живет'])
-# cursor.execute("INSERT INTO 'Samizdat' ('ФИО', 'Название', 'Aдpeс') VALUES ('{ФИО:s}', '{Название:s}', '{Aдpeс:s}')".format(**baze_parsing))
-# cursor.execute("INSERT INTO 'Samizdat' ('ФИО', 'Название', 'Aдpeс') VALUES ('{0:s}', '{1:s}', '{2:s}')".format(baze_parsing['ФИО'], baze_parsing['Название'], baze_parsing['Aдpeс']))
-# cursor.execute("INSERT INTO 'Samizdat' ('ФИО', 'Название', 'Aдpeс') VALUES ('{0:s}', '{1:s}', '{2:s}')".format(baze_parsing['ФИО'], baze_parsing['Название'], baze_parsing['Aдpeс']))
-
-# cursor.executemany("INSERT INTO Samizdat (ФИО) VALUES (ФИО = ?)", baze_parsing['ФИО'])
-# cursor.executemany("INSERT INTO Samizdat (Название) VALUES 'Название = ?", baze_parsing['Название'])
-# cursor.executemany("INSERT INTO Samizdat (Aдpeс) VALUES (дpeс = ?", baze_parsing['Aдpeс'])
-# for el in key_str[1:]:
-#     if el != 'Живет' and el != 'Friend':
-#         cursor_sql.execute("INSERT INTO 'Samizdat' ('{0:s}') VALUES ('{1:s}')".format(el, baze_parsing[el]))
-#
-# #attrs['href']
-# # in_avtor('http://samlib.ru/a/azik_n/')
-
-# ------ Функция записывает результат в файл как базу ------
-# def write_baze(letter):
-#     f = shelve.open("baze_rez.dat", "c")  # Консервация базы
-#     f[letter] = baze_adress
-#     f.close()
-#     # print(baze_adress)
-#     baze_adress.clear()
-
-# --------- Распечатка результатов ---------
-# def print_rez(letter):
-#     f = shelve.open("baze_rez.dat", "r")
-#     for i, adress in enumerate(f[letter]):
-#         print("{0:s} --> {1:s}".format(adress['ФИО'], adress['Aдpeс']))
-#     f.close()
